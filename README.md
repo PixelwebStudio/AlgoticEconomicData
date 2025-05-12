@@ -23,7 +23,7 @@ This project is a Python-based web scraper that extracts economic calendar data 
 
 ### Google Colab Version
 1. Open the notebook in Google Colab:
-    [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arashghafouri/Crawler/blob/main/algoticEconomicData_colab.ipynb)
+    [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PixelwebStudio/AlgoticEconomicData/blob/main/algoticEconomicData_colab.ipynb)
 2. Mount your Google Drive when prompted
 3. Run all cells in sequence
 4. Files will be saved to `/content/drive/MyDrive/AlgoticData/` in your Google Drive
