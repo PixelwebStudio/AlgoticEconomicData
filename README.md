@@ -16,7 +16,7 @@ This project is a Python-based web scraper that extracts economic calendar data 
 2. Make sure you have Chrome and ChromeDriver installed.
 3. Run the script:
     ```
-    python selenium_script.py
+    python algoticEconomicData.py
     ```
 
 ## Output Files
