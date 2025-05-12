@@ -1,42 +1,32 @@
 # Algotic Economic Data Crawler
 
-This project is a Python-based web scraper that extracts economic calendar data from [algoticlab.com/calendar.html](https://algoticlab.com/calendar.html) using Selenium and BeautifulSoup.
+این پروژه یک وب‌اسکرپر پایتونی است که داده‌های تقویم اقتصادی را از [algoticlab.com/calendar.html](https://algoticlab.com/calendar.html) با استفاده از Selenium و BeautifulSoup استخراج می‌کند.
 
-## Features
-- Extracts table data with event importance (RED, Orange, Yellow, Holiday)
-- Outputs data in three formats: CSV, JSON, Markdown
-- Fully automated and ready for AI/LLM data pipelines
-- Available in both local and Google Colab versions
+## امکانات
+- استخراج داده‌های جدول با اهمیت خبر (RED, Orange, Yellow, Holiday)
+- خروجی در سه فرمت: CSV، JSON، Markdown
+- کاملاً خودکار و آماده برای پایپ‌لاین‌های داده و هوش مصنوعی
 
-## How to Run
-
-### Local Version
-1. Install dependencies:
+## نحوه اجرا (نسخه لوکال)
+1. نصب پیش‌نیازها:
     ```
     pip install -r requirements.txt
     ```
-2. Make sure you have Chrome and ChromeDriver installed.
-3. Run the script:
+2. مطمئن شوید Chrome و ChromeDriver نصب است.
+3. اجرای اسکریپت:
     ```
     python algoticEconomicData.py
     ```
 
-### Google Colab Version
-1. Open the notebook in Google Colab:
-    [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PixelwebStudio/AlgoticEconomicData/blob/main/algoticEconomicData_colab.ipynb)
-2. Mount your Google Drive when prompted
-3. Run all cells in sequence
-4. Files will be saved to `/content/drive/MyDrive/AlgoticData/` in your Google Drive
+## فایل‌های خروجی
+- `economic_calendar.csv` : داده‌های جدول به فرمت CSV
+- `economic_calendar.json` : داده‌ها به فرمت JSON
+- `economic_calendar.md` : داده‌ها به صورت جدول Markdown
 
-## Output Files
-- `economic_calendar.csv` : Table data in CSV format
-- `economic_calendar.json` : Data in JSON format
-- `economic_calendar.md` : Data in Markdown table format
-
-## Notes
-- The script works locally and can be adapted for cloud/VPS environments.
-- For private repository, set the repo visibility to "Private" on GitHub.
-- Both local and Colab versions produce identical output formats.
+## نکات
+- اسکریپت به صورت لوکال اجرا می‌شود و قابل تطبیق برای سرور/کلود نیز هست.
+- برای خصوصی کردن مخزن، visibility را در گیت‌هاب روی "Private" قرار دهید.
+- خروجی نسخه لوکال با نسخه Colab (در صورت نیاز) یکسان خواهد بود.
 
 ---
 
