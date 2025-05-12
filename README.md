@@ -6,9 +6,11 @@ This project is a Python-based web scraper that extracts economic calendar data 
 - Extracts table data with event importance (RED, Orange, Yellow, Holiday)
 - Outputs data in three formats: CSV, JSON, Markdown
 - Fully automated and ready for AI/LLM data pipelines
+- Available in both local and Google Colab versions
 
 ## How to Run
 
+### Local Version
 1. Install dependencies:
     ```
     pip install -r requirements.txt
@@ -19,6 +21,13 @@ This project is a Python-based web scraper that extracts economic calendar data 
     python algoticEconomicData.py
     ```
 
+### Google Colab Version
+1. Open the notebook in Google Colab:
+    [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arashghafouri/Crawler/blob/main/algoticEconomicData_colab.ipynb)
+2. Mount your Google Drive when prompted
+3. Run all cells in sequence
+4. Files will be saved to `/content/drive/MyDrive/AlgoticData/` in your Google Drive
+
 ## Output Files
 - `economic_calendar.csv` : Table data in CSV format
 - `economic_calendar.json` : Data in JSON format
@@ -27,6 +36,7 @@ This project is a Python-based web scraper that extracts economic calendar data 
 ## Notes
 - The script works locally and can be adapted for cloud/VPS environments.
 - For private repository, set the repo visibility to "Private" on GitHub.
+- Both local and Colab versions produce identical output formats.
 
 ---
 
