@@ -1,1 +1,7 @@
 venv/
+economic_calendar.csv
+economic_calendar.json
+economic_calendar.md
+calendar.html
+crawl4ai-LLMS.txt
+__pycache__/
