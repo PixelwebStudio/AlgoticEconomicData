@@ -1,32 +1,32 @@
 # Algotic Economic Data Crawler
 
-این پروژه یک وب‌اسکرپر پایتونی است که داده‌های تقویم اقتصادی را از [algoticlab.com/calendar.html](https://algoticlab.com/calendar.html) با استفاده از Selenium و BeautifulSoup استخراج می‌کند.
+This project is a Python-based web scraper that extracts economic calendar data from [algoticlab.com/calendar.html] using Selenium and BeautifulSoup.
 
-## امکانات
-- استخراج داده‌های جدول با اهمیت خبر (RED, Orange, Yellow, Holiday)
-- خروجی در سه فرمت: CSV، JSON، Markdown
-- کاملاً خودکار و آماده برای پایپ‌لاین‌های داده و هوش مصنوعی
+## Features
+- Extracts table data with event importance (RED, Orange, Yellow, Holiday)
+- Outputs data in three formats: CSV, JSON, Markdown
+- Fully automated and ready for data/AI pipelines
 
-## نحوه اجرا (نسخه لوکال)
-1. نصب پیش‌نیازها:
+## How to Run (Local Version)
+1. Install dependencies:
     ```
     pip install -r requirements.txt
     ```
-2. مطمئن شوید Chrome و ChromeDriver نصب است.
-3. اجرای اسکریپت:
+2. Make sure Chrome and ChromeDriver are installed.
+3. Run the script:
     ```
     python algoticEconomicData.py
     ```
 
-## فایل‌های خروجی
-- `economic_calendar.csv` : داده‌های جدول به فرمت CSV
-- `economic_calendar.json` : داده‌ها به فرمت JSON
-- `economic_calendar.md` : داده‌ها به صورت جدول Markdown
+## Output Files
+- `economic_calendar.csv` : Table data in CSV format
+- `economic_calendar.json` : Data in JSON format
+- `economic_calendar.md` : Data in Markdown table format
 
-## نکات
-- اسکریپت به صورت لوکال اجرا می‌شود و قابل تطبیق برای سرور/کلود نیز هست.
-- برای خصوصی کردن مخزن، visibility را در گیت‌هاب روی "Private" قرار دهید.
-- خروجی نسخه لوکال با نسخه Colab (در صورت نیاز) یکسان خواهد بود.
+## Notes
+- The script runs locally and can be adapted for server/cloud environments.
+- To make the repository private, set the visibility to "Private" on GitHub.
+- The local version produces all output formats.
 
 ---
 
