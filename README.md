@@ -1,5 +1,10 @@
 # Algotic Economic Data Crawler
 
+## Version History
+
+- **v2.0.0**: Added Supabase integration for bulk data upload. Now the script can send all extracted data directly to a Supabase database table in addition to saving output files.
+- **v1.0.0**: Local file output only. The script extracts data and saves it as CSV, JSON, and Markdown files (no database integration).
+
 This project is a Python-based web scraper that extracts economic calendar data from [algoticlab.com/calendar.html] using Selenium and BeautifulSoup.
 
 ## Features
