@@ -30,7 +30,13 @@ try:
         soup = BeautifulSoup(table.get_attribute('outerHTML'), 'html.parser')
         rows = soup.find_all('tr')
         data = []
+        current_date = None
         for row in rows:
+            # Check if this row is a date row
+            day_td = row.find('td', class_='theDay')
+            if day_td:
+                current_date = day_td.text.strip()
+                continue  # Skip the date row itself
             cols = row.find_all('td')
             if not cols:
                 continue
@@ -55,23 +61,49 @@ try:
                     # Replace importance value in the corresponding column
                     cols[idx] = imp_value
             cols = [col.text.strip() if hasattr(col, 'text') else col for col in cols]
-            data.append(cols)
-        # Extract headers
-        headers = []
-        header_row = soup.find('thead').find('tr')
-        for th in header_row.find_all('th'):
-            headers.append(th.text.strip())
-        # Save as DataFrame and export to CSV
-        df = pd.DataFrame(data, columns=headers)
+            # Insert date as the first column
+            row_dict = {'date': current_date}
+            # Map columns to headers (skip if headers not yet extracted)
+            if not data:
+                # Extract headers for mapping
+                header_row = soup.find('thead').find('tr')
+                headers = [th.text.strip() for th in header_row.find_all('th')]
+            for h, v in zip(headers, cols):
+                row_dict[h] = v
+            data.append(row_dict)
+        # Ensure 'date' is the first column in output
+        output_headers = ['date'] + [h for h in headers if h != 'date']
+        df = pd.DataFrame(data, columns=output_headers)
+        # Custom filter: remove rows where all main fields (except date) are empty or NaN
+        main_fields = [h for h in output_headers if h != 'date']
+        df = df[~df[main_fields].apply(lambda row: all((str(x).strip() == '' or pd.isna(x)) for x in row), axis=1)]
+        df = df.fillna("")  # Replace NaN with empty string for clean output
         df.to_csv('economic_calendar.csv', index=False, encoding='utf-8-sig')
         print("Data saved to economic_calendar.csv.")
-        # Save as JSON
         df.to_json('economic_calendar.json', orient='records', force_ascii=False, indent=2)
         print("Data saved to economic_calendar.json.")
-        # Save as Markdown
         with open('economic_calendar.md', 'w', encoding='utf-8') as f:
             f.write(df.to_markdown(index=False))
         print("Data saved to economic_calendar.md.")
+        
+        # --- Optional: Upload to Supabase ---
+        # try:
+        #     from supabase_uploader import upload_economic_calendar_bulk
+        #     # Prepare data as list of dicts matching Supabase table columns
+        #     records = df.rename(columns={
+        #         'Time': 'time',
+        #         'Cur.': 'cur',
+        #         'Imp.': 'imp',
+        #         'Event': 'event',
+        #         'Actual': 'actual',
+        #         'Forecast': 'forecast',
+        #         'Previous': 'previous'
+        #     }).to_dict(orient="records")
+        #     upload_economic_calendar_bulk(records)
+        # except ImportError:
+        #     print("Supabase uploader module not found. Skipping upload.")
+        # except Exception as e:
+        #     print("Error uploading to Supabase:", e)
     except Exception as e:
         print("Table with ID ecEventsTable not found or error:", e)
     driver.switch_to.default_content()
